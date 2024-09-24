@@ -29,7 +29,7 @@ class ProductController extends Controller
         $validated = $request->validated();
         try {
             $product = $this->productRepository->createProduct($validated);
-            return response()->json(["message" => "Product Save Successfully Complete", 'product' => $product], 201);
+            return response()->json(["message" => "Product Save Successfully Complete", 'product' => $product], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 401);
         }
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
         try {
             $product = $this->productRepository->updateProduct($id, $validated);
-            return response()->json(["message" => "Product Update Successfully Complete", 'product' => $product], 201);
+            return response()->json(["message" => "Product Update Successfully Complete", 'product' => $product], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 401);
         }

@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         try {
             $token = $this->userRepository->register($validated);
-            return response()->json(["message" => "Registration Successfully complete", 'token' => $token], 201);
+            return response()->json(["message" => "Registration Successfully complete", 'token' => $token], 200);
         } catch (\Exception $exception) {
             return response(['error' => $exception->getMessage()], 401);
         }
@@ -44,7 +44,7 @@ class AuthController extends Controller
             return response(['error' => $exception->getMessage()], 409);
         }
 
-        return response()->json(["message" => "Login Success", 'token' => $token],201);
+        return response()->json(["message" => "Login Success", 'token' => $token],200);
     }
 
 
@@ -55,7 +55,7 @@ class AuthController extends Controller
         } catch (\Exception $exception) {
             return response(['error' => $exception->getMessage()], 401);
         }
-        return response()->json(['message' => 'Successfully logged out'],201);
+        return response()->json(['message' => 'Successfully logged out'],200);
     }
 
     public function refresh()
@@ -65,6 +65,6 @@ class AuthController extends Controller
         } catch (\Exception $exception) {
             return response(['error' => $exception->getMessage()], 401);
         }
-        return response()->json(['token' => $newToken], 201);
+        return response()->json(['token' => $newToken], 200);
     }
 }
